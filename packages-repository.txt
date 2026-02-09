@@ -1,6 +1,6 @@
 acpi
 arc-gtk-theme-eos
-cursor-clip
+cliphist
 egl-wayland
 file-roller
 foot
@@ -17,7 +17,6 @@ hyprlock
 hyprlauncher
 hyprpolkitagent
 hyprgraphics
-hyprlight
 xdg-desktop-portal-hyprland
 sysstat
 thunar
@@ -29,4 +28,3 @@ ttf-ubuntu-font-family
 quickshell
 wayland-protocols
 xorg-xwayland
-noctalia-shell

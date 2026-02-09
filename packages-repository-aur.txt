@@ -1,0 +1,2 @@
+hyprlight
+noctalia-shell

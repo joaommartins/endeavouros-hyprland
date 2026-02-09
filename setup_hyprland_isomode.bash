@@ -31,6 +31,11 @@ fi
 echo "Installing needed packages..."
 pacman -S --noconfirm --noprogressbar --needed --disable-download-timeout $(< ./hyprland/packages-repository.txt)
 
+mapfile -t pkgs < <(grep -v '^\s*#' hyprland/packages-repository-aur.txt | sed '/^\s*$/d')
+if [ ${#pkgs[@]} -gt 0 ]; then
+  sudo -u "$username" yay -S --noconfirm --needed "${pkgs[@]}"
+fi
+
 # Deploy user configs
 echo "Deploying user configs..."
 rsync -a hyprland/.config "/home/${username}/"

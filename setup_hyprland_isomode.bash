@@ -3,7 +3,7 @@ username="$1"
 
 # Clone the repo
 echo "Cloning the EOS Community Hyprland repo..."
-git clone https://github.com/joaommartins/endeavouros-hyprland.git
+git clone https://github.com/joaommartins/endeavouros-hyprland.git hyprland
 
 # Check if nvidia-inst is installed
 # If it is, do the Nvidia stuff

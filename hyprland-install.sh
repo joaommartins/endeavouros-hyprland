@@ -35,9 +35,15 @@ fi
 echo "Installing needed packages..."
 pacman -S --noconfirm --noprogressbar --needed --disable-download-timeout $(<packages-repository.txt)
 
+# Allow user to run pacman without password (needed for yay inside sudo)
+echo "${username} ALL=(ALL) NOPASSWD: /usr/bin/pacman" > /etc/sudoers.d/yay-temp
+
 # Install AUR packages (yay must not run as root)
 echo "Installing AUR packages..."
 sudo -u "${username}" yay -S --noconfirm --noprogressbar --needed --disable-download-timeout $(<packages-repository-aur.txt)
+
+# Remove temporary sudoers rule
+rm -f /etc/sudoers.d/yay-temp
 
 # Deploy user configs
 echo "Deploying user configs..."

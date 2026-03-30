@@ -30,9 +30,15 @@ echo "Installing needed packages..."
 pacman -S --noconfirm --noprogressbar --needed --disable-download-timeout $(< ./hyprland/packages-repository.txt)
 
 mapfile -t pkgs < <(grep -v '^\s*#' hyprland/packages-repository-aur.txt | sed '/^\s*$/d')
+# Allow user to run pacman without password (needed for yay inside sudo)
+echo "${username} ALL=(ALL) NOPASSWD: /usr/bin/pacman" > /etc/sudoers.d/yay-temp
+
 if [ ${#pkgs[@]} -gt 0 ]; then
   sudo -u "$username" yay -S --noconfirm --needed "${pkgs[@]}"
 fi
+
+# Remove temporary sudoers rule
+rm -f /etc/sudoers.d/yay-temp
 
 # Deploy user configs
 echo "Deploying user configs..."

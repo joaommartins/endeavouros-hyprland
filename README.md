@@ -30,6 +30,7 @@ sudo ./hyprland-install.sh
 | Category | Components |
 |---|---|
 | Window manager | Hyprland, hyprpaper (wallpaper), hypridle (idle), hyprlock (lock screen) |
+| Desktop shell | noctalia-shell (status bar, widgets — built on quickshell) |
 | Login | greetd + ReGreet |
 | Terminal | foot |
 | Editor | helix |
@@ -52,9 +53,13 @@ sudo ./hyprland-install.sh
 | Super + Space | App launcher |
 | Super + Q | Close window |
 | Super + F | Toggle floating |
+| Super + M | Fullscreen |
 | Super + L | Lock screen |
 | Super + V | Clipboard history |
-| Super + 1-3 | Switch workspace |
+| Super + 1-0 | Switch workspace 1–10 |
+| Super + Shift + 1-0 | Move window to workspace |
+| Super + Arrow keys | Move focus |
+| Super + Mouse drag | Move / resize window |
 | Print | Screenshot (selection) |
 | Shift + Print | Screenshot (full display) |
 | Ctrl + Print | Screenshot (window) |

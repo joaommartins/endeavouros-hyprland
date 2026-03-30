@@ -32,7 +32,6 @@ ttf-nerd-fonts-symbols
 ttf-ubuntu-font-family
 qt5-wayland
 qt6-wayland
-quickshell
 wayland-protocols
 wl-clipboard
 grim

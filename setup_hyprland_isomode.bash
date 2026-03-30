@@ -14,7 +14,7 @@ if pacman -Qq nvidia-inst 2>/dev/null | grep -q .; then
 [Desktop Entry]
 Name=Hyprland-Nvidia
 Comment=Hyprland with Nvidia
-Exec=hyprland --unsupported-gpu
+Exec=start-hyprland -- --unsupported-gpu
 Type=Application
 EOF
     echo "Adding dracut config for early module loading..."

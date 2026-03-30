@@ -40,6 +40,9 @@ fi
 # Remove temporary sudoers rule
 rm -f /etc/sudoers.d/yay-temp
 
+# Hide uwsm-managed session (uwsm not installed)
+rm -f /usr/share/wayland-sessions/hyprland-uwsm.desktop
+
 # Deploy user configs
 echo "Deploying user configs..."
 rsync -a hyprland/.config "/home/${username}/"

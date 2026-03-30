@@ -40,7 +40,7 @@ font_name = "Cantarell 12"
 icon_theme_name = "Adwaita"
 
 # GTK theme name
-theme_name = "Adwaita"
+theme_name = "Arc-Dark"
 
 [commands]
 # The command used to reboot the system

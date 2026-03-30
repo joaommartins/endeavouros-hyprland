@@ -6,7 +6,6 @@ cliphist
 egl-wayland
 file-roller
 foot
-fuzzel
 gvfs
 greetd
 helix
@@ -19,7 +18,6 @@ hyprland
 hyprpaper
 hypridle
 hyprlock
-hyprlauncher
 hyprpolkitagent
 hyprgraphics
 xdg-desktop-portal-hyprland

@@ -62,9 +62,6 @@ rsync -a --chown=root:root etc/ /etc/
 # Check if the script is running in a virtual machine
 if systemd-detect-virt | grep -vq "none"; then
   echo "Virtual machine detected; enabling software rendering workarounds..."
-  # Greeter: uncomment software rendering variables in ReGreet config
-  sed -i '/^#WLR_RENDERER_ALLOW_SOFTWARE/s/^#//' /etc/greetd/regreet.toml
-  sed -i '/^#WLR_NO_HARDWARE_CURSORS/s/^#//' /etc/greetd/regreet.toml
   # User session: add env vars to hyprland.conf for Aquamarine + wlroots compat
   cat <<'EOF' >> "/home/${username}/.config/hypr/hyprland.conf"
 

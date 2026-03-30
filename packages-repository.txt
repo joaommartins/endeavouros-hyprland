@@ -9,15 +9,11 @@ foot
 gvfs
 greetd
 helix
-greetd-regreet
+greetd-tuigreet
 htop
 jq
-mako
 hyprshot
 hyprland
-hyprpaper
-hypridle
-hyprlock
 hyprpolkitagent
 hyprgraphics
 xdg-desktop-portal-hyprland

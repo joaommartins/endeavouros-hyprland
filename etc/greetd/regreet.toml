@@ -13,16 +13,10 @@ fit = "Cover"
 
 # The entries defined in this section will be passed to the session as environment variables when it is started
 [env]
-# Set desktop and session type
-XDG_SESSION_TYPE = "wayland"
-XDG_CURRENT_DESKTOP = "hyprland"
-XDG_SESSION_DESKTOP = "hyprland"
-
-# Specify Wayland backends for various applications
+# Wayland backend hints for applications (XDG vars are set by start-hyprland)
 MOZ_ENABLE_WAYLAND = "1"
 OZONE_PLATFORM = "wayland"
 GDK_BACKEND = "wayland"
-QT_QPA_PLATFORM = "wayland"
 
 # Prevent using hardware cursors in Wayland, forcing software-rendered cursors.
 # Uncomment if you experience issues with your cursor

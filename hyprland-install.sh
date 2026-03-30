@@ -2,6 +2,9 @@
 
 username="$(logname)"
 
+# Ensure we run from the repo root (sed edits local files before deploy)
+cd "$(dirname "$0")"
+
 # Check for sudo
 if [ "$EUID" -ne 0 ]; then
   echo "This script must be run with sudo."
@@ -11,8 +14,6 @@ fi
 # Check if nvidia-inst is installed
 # If it is, do the Nvidia stuff
 if pacman -Qq nvidia-inst 2>/dev/null | grep -q .; then
-  echo "Adding the --unsupported-gpu flag to the hyprland call in greetd.conf..."
-  sed -i 's|sway -c|hyprland -c|' etc/greetd/greetd.conf
   echo "Adding a custom desktop file for Nvidia sessions..."
   mkdir -p /usr/share/wayland-sessions
   cat <<EOF >/usr/share/wayland-sessions/hyprland-nvidia.desktop
@@ -34,11 +35,14 @@ fi
 echo "Installing needed packages..."
 pacman -S --noconfirm --noprogressbar --needed --disable-download-timeout $(<packages-repository.txt)
 
+# Install AUR packages (yay must not run as root)
+echo "Installing AUR packages..."
+sudo -u "${username}" yay -S --noconfirm --noprogressbar --needed --disable-download-timeout $(<packages-repository-aur.txt)
+
 # Deploy user configs
 echo "Deploying user configs..."
 rsync -a .config "/home/${username}/"
 rsync -a .local "/home/${username}/"
-rsync -a home_config/ "/home/${username}/"
 # Restore user ownership
 chown -R "${username}:${username}" "/home/${username}"
 
@@ -48,13 +52,24 @@ rsync -a --chown=root:root etc/ /etc/
 
 # Check if the script is running in a virtual machine
 if systemd-detect-virt | grep -vq "none"; then
-  echo "Virtual machine detected; enabling WLR_RENDERER_ALLOW_SOFTWARE variable in ReGreet config..."
-  # Uncomment WLR_RENDERER_ALLOW_SOFTWARE variable in ReGreet config
+  echo "Virtual machine detected; enabling software rendering workarounds..."
+  # Greeter: uncomment software rendering variables in ReGreet config
   sed -i '/^#WLR_RENDERER_ALLOW_SOFTWARE/s/^#//' /etc/greetd/regreet.toml
+  sed -i '/^#WLR_NO_HARDWARE_CURSORS/s/^#//' /etc/greetd/regreet.toml
+  # User session: add env vars to hyprland.conf for Aquamarine + wlroots compat
+  cat <<'EOF' >> "/home/${username}/.config/hypr/hyprland.conf"
+
+# VM workarounds (auto-added by installer)
+env = WLR_RENDERER_ALLOW_SOFTWARE,1
+env = WLR_NO_HARDWARE_CURSORS,1
+env = AQ_NO_ATOMIC,1
+env = LIBGL_ALWAYS_SOFTWARE,1
+EOF
 fi
 
-# Enable the Greetd service
-echo "Enabling the Greetd service..."
+# Enable services
+echo "Enabling services..."
 systemctl -f enable greetd.service
+systemctl enable bluetooth.service
 
 echo "Installation complete."

@@ -1,6 +1,4 @@
-acpi
 arc-gtk-theme-eos
-blueman
 brightnessctl
 cliphist
 egl-wayland
@@ -10,14 +8,11 @@ gvfs
 greetd
 helix
 greetd-tuigreet
-htop
-jq
 hyprshot
 hyprland
 hyprpolkitagent
 hyprgraphics
 xdg-desktop-portal-hyprland
-sysstat
 thunar
 thunar-archive-plugin
 thunar-volman
@@ -26,10 +21,8 @@ ttf-nerd-fonts-symbols
 ttf-ubuntu-font-family
 qt5-wayland
 qt6-wayland
-wayland-protocols
 wl-clipboard
 grim
-hyprpwcenter
 libnotify
 nm-connection-editor
 pamixer
@@ -37,3 +30,6 @@ pipewire-audio
 playerctl
 slurp
 xorg-xwayland
+wlsunset
+power-profiles-daemon
+ddcutil

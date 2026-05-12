@@ -1,2 +1,3 @@
 hyprlight
+noctalia-qs
 noctalia-shell

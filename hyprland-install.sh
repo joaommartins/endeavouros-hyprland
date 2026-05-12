@@ -51,7 +51,6 @@ rm -f /usr/share/wayland-sessions/hyprland-uwsm.desktop
 # Deploy user configs
 echo "Deploying user configs..."
 rsync -a .config "/home/${username}/"
-rsync -a .local "/home/${username}/"
 # Restore user ownership
 chown -R "${username}:${username}" "/home/${username}"
 

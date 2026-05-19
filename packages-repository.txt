@@ -20,13 +20,16 @@ hyprlock
 hyprpolkitagent
 hyprshot
 kanshi
+fzf
 libnotify
 nm-connection-editor
 noto-fonts-emoji
 nwg-look
 pamixer
 pavucontrol
-pipewire-audio
+pipewire-alsa
+pipewire-jack
+pipewire-pulse
 playerctl
 power-profiles-daemon
 qt5ct
@@ -42,6 +45,7 @@ ttf-meslo-nerd
 ttf-nerd-fonts-symbols
 ttf-ubuntu-font-family
 vlc
+wireplumber
 wl-clipboard
 wlsunset
 xdg-desktop-portal-hyprland
@@ -49,3 +53,5 @@ xdg-user-dirs
 xorg-xwayland
 yazi
 zed
+zoxide
+zsh
